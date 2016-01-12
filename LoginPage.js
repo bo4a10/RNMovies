@@ -35,8 +35,6 @@ class LoginPage extends Component {
     renderScene(route, navigator) {
         return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{color: 'black'}}> {this.state.login} </Text>
-                <Text style={{color: 'black'}}> {this.state.pass} </Text>
                 <TextInput style={{marginHorizontal: 10}} placeholder={'Login'} onChangeText={(text) => this.setState({login: text})} value={this.state.login}></TextInput>
                 <TextInput style={{marginHorizontal: 10}} placeholder={'Password'} secureTextEntry={true} onChangeText={(text) => this.setState({pass: text})} value={this.state.pass}></TextInput>
                 <TouchableOpacity onPress={this.loginAction.bind(this)}>

@@ -24,7 +24,7 @@ class MoviesList extends Component {
         super(props);
         this.state = {
             dataSource: new ListView.DataSource({
-                rowHasChanged: (row1, row2) => row1 !== row2,
+                rowHasChanged: (row1, row2) => row1 !== row2
             }),
             loaded: false
         }
@@ -38,12 +38,12 @@ class MoviesList extends Component {
         fetch(REQUEST_URL)
             .then((response) => response.json())
             .then((responseData) => {
-                //setTimeout(() => {
+                setTimeout(() => {
                     this.setState({
                         dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
-                        loaded: true,
+                        loaded: true
                     });
-                //}, 2000);
+                }, 2000);
             })
             .done();
     }
@@ -89,7 +89,7 @@ class MoviesList extends Component {
 var styles = StyleSheet.create({
     toolbar: {
         backgroundColor: '#e9eaed',
-        height: 56,
+        height: 56
     },
     movieContainer: {
         flex: 1,
@@ -126,11 +126,13 @@ var styles = StyleSheet.create({
         backgroundColor: '#F5FCFD'
     },
     loadingStart: {
-        "color": 'white'
+        fontSize: 18,
+        color: 'black'
     },
     loadingStartContainer: {
+        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     }
 });
 
