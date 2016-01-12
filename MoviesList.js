@@ -39,11 +39,11 @@ class MoviesList extends Component {
             .then((response) => response.json())
             .then((responseData) => {
                 //setTimeout(() => {
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
-                    loaded: true,
-                });
-                //}, 1000);
+                    this.setState({
+                        dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+                        loaded: true,
+                    });
+                //}, 2000);
             })
             .done();
     }
@@ -58,7 +58,7 @@ class MoviesList extends Component {
                 dataSource={this.state.dataSource}
                 renderRow={this.renderMovie}
                 style={styles.listView}
-                />
+            />
         );
     }
 

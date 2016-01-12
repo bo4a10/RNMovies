@@ -2,23 +2,22 @@
 
 var React = require('react-native');
 var {
-  Component,
-  View,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity
+    Component,
+    View,
+    Text,
+    TouchableHighlight,
+    TouchableOpacity,
+    ProgressBarAndroid
 } = React;
-
-var MoviesList = require('./MoviesList')
 
 class SplashPage extends Component {
   componentWillMount() {
     var navigator = this.props.navigator;
-    // setTimeout(() => {
-    //   navigator.replace({
-    //     id: 'LoginPage',
-    //   });
-    // }, 1000);
+     setTimeout(() => {
+       navigator.replace({
+         id: 'LoginPage',
+       });
+     }, 3000);
   }
 
   onClickStart () {
@@ -36,7 +35,7 @@ class SplashPage extends Component {
               <Text style={{color: 'white', fontSize: 28}}>Business Easy</Text>
           </View>
         </TouchableOpacity>
-        <MoviesList style={{flexDirection: 'row', flex: 1}}/>
+        <ProgressBarAndroid styleAttr="LargeInverse"/>
       </View>
     );
   }

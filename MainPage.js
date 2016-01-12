@@ -9,7 +9,11 @@ var {
   Navigator,
   TouchableHighlight,
   TouchableOpacity,
+    Alert
 } = React;
+
+var MoviesList = require('./MoviesList');
+var NAV_HEIGHT = 50;
 
 class MainPage extends Component {
   render() {
@@ -18,51 +22,40 @@ class MainPage extends Component {
           renderScene={this.renderScene.bind(this)}
           navigator={this.props.navigator}
           navigationBar={
-            <Navigator.NavigationBar style={{backgroundColor: '#246dd5'}}
+            <Navigator.NavigationBar style={{backgroundColor: '#246dd5', height: NAV_HEIGHT}}
                 routeMapper={NavigationBarRouteMapper} />
           } />
     );
   }
+
   renderScene(route, navigator) {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
-        <TouchableHighlight style={{backgroundColor: 'yellow', padding: 10}}
-            onPress={this.gotoPersonPage.bind(this)}>
-          <Text style={{backgroundColor: 'yellow', color: 'green'}}>Next</Text>
-        </TouchableHighlight>
+      <View style={{flex: 1, marginTop: NAV_HEIGHT}}>
+        <MoviesList style={{flexDirection: 'row', flex: 1}}/>
       </View>
     );
-  }
-  gotoPersonPage() {
-    this.props.navigator.push({
-      id: 'PersonPage',
-      name: 'my home page',
-    });
   }
 }
 
 var NavigationBarRouteMapper = {
   LeftButton(route, navigator, index, navState) {
     return (
-      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
-          onPress={() => navigator.parentNavigator.pop()}>
-        <Text style={{color: 'white', margin: 10,}}>
-          return
+      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}} onPress={() => navigator.parentNavigator.pop()}>
+        <Text style={{color: 'white', margin: 10}}>
+          Log out
         </Text>
       </TouchableOpacity>
     );
   },
   RightButton(route, navigator, index, navState) {
-    return null;
+    return (
+        <TouchableHighlight style={{flex: 1, justifyContent: 'center'}} onPress={() => navigator.parentNavigator.push({id: 'PersonPage',  sceneConfig: Navigator.SceneConfigs.FloatFromBottom})}>
+            <Text style={{color: 'white', margin: 10}}>Profile</Text>
+        </TouchableHighlight>
+    )
   },
   Title(route, navigator, index, navState) {
-    return (
-      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={{color: 'white', margin: 10, fontSize: 16}}>
-          Home
-        </Text>
-      </TouchableOpacity>
-    );
+    return null;
   }
 };
 

@@ -16,22 +16,19 @@ class PersonPage extends Component {
       <Navigator
           renderScene={this.renderScene.bind(this)}
           navigator={this.props.navigator}
-          navigationBar={
-            <Navigator.NavigationBar style={{backgroundColor: '#246dd5'}}
-                routeMapper={NavigationBarRouteMapper} />
-          } />
+          />
     );
   }
   renderScene(route, navigator) {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <TouchableOpacity
-            onPress={this.gotoNext.bind(this)}>
-          <Text>My personal home page, a beautiful bar @. @</Text>
+        <TouchableOpacity onPress={() => navigator.parentNavigator.pop()}>
+          <Text>Demo profile page. Press to return</Text>
         </TouchableOpacity>
       </View>
     );
   }
+
   gotoNext() {
     this.props.navigator.push({
       id: 'NoNavigatorPage',
