@@ -31,7 +31,7 @@ class MainPage extends Component {
   renderScene(route, navigator) {
     return (
       <View style={{flex: 1, marginTop: NAV_HEIGHT}}>
-        <MoviesList style={{flexDirection: 'row', flex: 1}}/>
+        <MoviesList style={{flexDirection: 'row', flex: 1}} navigator={this.props.navigator}/>
       </View>
     );
   }

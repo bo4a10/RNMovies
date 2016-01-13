@@ -19,6 +19,7 @@ var LoginPage = require('./LoginPage');
 var MainPage = require('./MainPage');
 var PersonPage = require('./PersonPage');
 var NoNavigatorPage = require('./NoNavigatorPage');
+var MoviePage = require('./MoviePage');
 
 class RNMovies extends Component {
   render() {
@@ -37,41 +38,47 @@ class RNMovies extends Component {
     );
   }
 
-  renderScene(route, navigator) {
-    var routeId = route.id;
-    if (routeId === 'SplashPage') {
-      return (
-          <SplashPage
-              navigator={navigator} />
-      );
-    }
-    if (routeId === 'LoginPage') {
-      return (
-          <LoginPage
-              navigator={navigator} />
-      );
-    }
-    if (routeId === 'MainPage') {
-      return (
-          <MainPage
-              navigator={navigator} />
-      );
-    }
-    if (routeId === 'PersonPage') {
-      return (
-          <PersonPage
-              navigator={navigator} />
-      );
-    }
-    if (routeId === 'NoNavigatorPage') {
-      return (
-          <NoNavigatorPage
-              navigator={navigator} />
-      );
-    }
-    return this.noRoute(navigator);
+    renderScene(route, navigator) {
+        var routeId = route.id;
+        if (routeId === 'SplashPage') {
+            return (
+                <SplashPage
+                    navigator={navigator}/>
+            );
+        }
+        if (routeId === 'LoginPage') {
+            return (
+                <LoginPage
+                    navigator={navigator}/>
+            );
+        }
+        if (routeId === 'MainPage') {
+            return (
+                <MainPage
+                    navigator={navigator}/>
+            );
+        }
+        if (routeId === 'PersonPage') {
+            return (
+                <PersonPage
+                    navigator={navigator}/>
+            );
+        }
+        if (routeId === 'MoviePage') {
+            return (
+                <MoviePage
+                    navigator={navigator} route={route}/>
+            );
+        }
+        if (routeId === 'NoNavigatorPage') {
+            return (
+                <NoNavigatorPage
+                    navigator={navigator}/>
+            );
+        }
+        return this.noRoute(navigator);
 
-  }
+    }
 
   noRoute(navigator) {
     return (

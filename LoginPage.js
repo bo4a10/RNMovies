@@ -52,7 +52,6 @@ class LoginPage extends Component {
     }
 
     loginAction() {
-
         var login = this.state.login;
         var pass  = this.state.pass;
         this.setState({login: '', pass: ''});

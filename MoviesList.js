@@ -18,10 +18,12 @@ var {
     } = React;
 
 var ImageTouch = require('./ImageTouch');
+var _navigator;
 
 class MoviesList extends Component {
     constructor(props) {
         super(props);
+        _navigator = props.navigator;
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2
@@ -76,13 +78,20 @@ class MoviesList extends Component {
     renderMovie(movie) {
         return (
             <View style={styles.movieContainer}>
-                <ImageTouch thumbnail={movie.posters.thumbnail} movie={movie}/>
-                <View style={{flex: 1}}>
-                    <Text style={styles.title}>{movie.title}</Text>
-                    <Text style={styles.year}>{movie.year}</Text>
-                </View>
+                <ImageTouch thumbnail={movie.posters.thumbnail} movie={movie} navigator={_navigator}/>
+                    <View style={{flex: 1}}>
+                        <Text style={styles.title}>{movie.title}</Text>
+                        <Text style={styles.year}>{movie.year}</Text>
+                    </View>
             </View>
         );
+    }
+
+    goToMovie() {
+        this.props.navigator.push({
+            id: 'MoviePage',
+            name: 'Movie',
+        });
     }
 }
 
